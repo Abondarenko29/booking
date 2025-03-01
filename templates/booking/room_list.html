@@ -3,7 +3,7 @@
 
 {% for room in rooms %}
 <div class="card mb-3 room" style="max-width: 540px;">
-    <div class="row g-0">
+  <div class="row g-0">
         {% load static %}
       <div class="col-md-4">
         <img src="{% static '/img/no_photo.png' %}" class="img-fluid rounded-start room-image">
@@ -13,14 +13,16 @@
           <h5 class="card-title">
             <a href="{% url 'room-details' room.pk %}">{{ room.location }}</a></h5>
           <div class="other-text">
-        <h6 class="card-title">room at {{ room.capacity }} people.</h6>
-        <small class="text-body-secondary">{{ self.location }}</small>
-          <p class="card-text">{{ room.description }}</p>
+          <h6 class="card-title" style="margin-bottom:0px;">Кімната №{{ room.number }}</h6>
+        <h6 class="card-title">Розрахована на {{ room.capacity }} людини.</h6>
+        <small class="text-body-secondary">
+          <p class="card-text">{{ room.description }}</p></small>
           <p class="card-text"><small class="text-body-secondary">
             Площа: {{ room.area }} м³,<br>
             Ціна: {{ room.price }} ₴/день.
         </small></p>
         </div>
+        <a href="{% url 'book-room' %}" class="btn btn-primary active">Забронювати</a>
         </div>
       </div>
     </div>

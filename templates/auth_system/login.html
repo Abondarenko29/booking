@@ -7,10 +7,21 @@
 
 {% block content %}
 <div class="form text-center">
+    {% csrf_token %}
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+
+        <label for="username">Username:</label>
+        <input type="text" name="username" placeholder="username" id="username" required><br>
+
+        <label for="password">Пароль:</label>
+        <input type="password" name="password" placeholder="password" id="password" required><br>
         <button type="submit" class="small-button">Залогінитися</button>
     </form>
+    {% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}

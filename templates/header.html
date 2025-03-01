@@ -14,11 +14,28 @@
                 <a class="nav-link active" href="{% url 'room-list'%}">Список кімнат</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">Мої бронювання</a>
+                <a class="nav-link active" href="{% url 'booking-list' %}">Мої бронювання</a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ request.user.username }}
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Вийти</a></li>
+                    <li><a class="dropdown-item" href="#">Змінити</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Видалити</a></li>
+                </ul>
+              </li>
+            {% else %}
+            <li>
+                <a class="nav-link active" href="{% url 'login' %}">Увійти|</a>
             </li>
             <li>
-                <a class="nav-link active" href="{% url 'logout' %}">Вийти</a>
+                <a class="nav-link active" style="padding-left:0px;" href="{% url 'register' %}">Зареєструватися</a>
             </li>
+            {% endif %}
         </ul>
     </div>
     <div class="container-fluid">

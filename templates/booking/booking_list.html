@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for booking in bookings %}
+<div class="card mb-3 room" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="{% url 'booking-details' booking.pk %}">Кімната №{{ booking.room.number }} </a></h5>
+            <div class="other-text">
+            <h6 class="card-title">
+                Вартість: {{ booking.calculate_total }} ₴</h6>
+            <p class="card-text"><small class="text-body-secondary">
+                Бронювання здійснюється:<br>
+              З {{ booking.start_time }}<br>
+              До {{ booking.end_time }}
+          </small></p>
+          <small class="text-body-secondary">
+            <p class="card-text">Заброньовано: {{ booking.creation_time }}</p></small>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

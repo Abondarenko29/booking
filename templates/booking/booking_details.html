@@ -9,7 +9,8 @@
         <h1>
         <a class="room" href="{% url 'room-details' booking.room.pk %}">Кімната № {{ booking.room.number }}</a>
         </h1>
-        <h2>Забронював: {{ booking.user.username }}</h2>
+        <hr class="none">
+        <h2>Заброньовано на: {{ booking.user.username }}</h2>
         <span class="big">Вартість {{ total }} ₴</span>
         <hr class="none">
         <p>Бронювання здійснюється:<br>

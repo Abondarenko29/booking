@@ -12,7 +12,7 @@
     {% csrf_token %}
     <div>
         <label for="room-number">room-number:</label>
-        <input type="text" id="room-number" name="room-number">
+        <input type="text" id="room-number" name="room-number" value="{{ room_number }}">
     </div>
 
     <div>
@@ -24,7 +24,7 @@
         <label for="end-time">end-time:</label>
         <input type="datetime-local" id="end-time" name="end-time">
     </div>
-    <button type="submit" class="small-button">book</button>
+    <button type="submit" class="small-button">Забронювати</button>
 </form>
 </div>
 

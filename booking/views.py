@@ -48,7 +48,7 @@ def book_room(request):
 
     else:
         return render(request,
-                      "booking/booking_form.html")
+                      "booking/booking_form.html",)
 
 
 def booking_details(request, pk):
@@ -62,3 +62,18 @@ def booking_details(request, pk):
     return render(request,
                   "booking/booking_details.html",
                   context)
+
+
+@login_required(login_url="login")
+def booking_list(request):
+    bookings = Booking.objects.filter(user=request.user)
+    # total = list(map(calculate_total, bookings))
+
+    context = {
+        "bookings": bookings,
+    }
+    return render(
+        request,
+        "booking/booking_list.html",
+        context
+    )

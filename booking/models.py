@@ -32,6 +32,10 @@ class Booking(models.Model):
     def __str__(self):
         return f"{self.user} books {self.room}"
 
+    def calculate_total(booking):
+        days = (booking.end_time - booking.start_time).days
+        return float(days * booking.room.price)
+
     class Meta:
         verbose_name = "booking"
         verbose_name_plural = "bookings"
