@@ -1,0 +1,30 @@
+div.form {
+    color:darkgoldenrod;
+    align-content: center;
+    padding:10%;
+    border:2px darkred dashed;
+    margin:10%;
+    font-weight:bold;
+}
+
+div.text-center {
+    text-align:center;
+}
+
+div.text-left {
+    text-align:left;
+}
+
+button {
+    background-color:darkgoldenrod;
+    font-weight:bold;
+    color:darkblue;
+}
+
+button.small-button {
+    width:30%;
+}
+
+button.large-button {
+    width:100%;
+}

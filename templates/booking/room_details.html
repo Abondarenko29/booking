@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="content">
+    <img src="{% static 'img/no_photo.png' %}" class="room">
+    <div>
+        <h1>Кімната №{{ room.number }}</h1>
+        <h2>Розрахована на {{ room.capacity }} людей</h2>
+        <h4>Адреса: {{ room.location }}</h4>
+        <p class="description">{{ room.description }}</p>
+        <small>Площа: {{ room.area }} м²</small>
+    </div>
+</div>
+{% endblock %}

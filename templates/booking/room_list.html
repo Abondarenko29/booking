@@ -1,6 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
 
 {% for room in rooms %}
-    <h1>{{ room.number }}</h1>
-    <h2>{{ room.capacity }}</h2>
-    <p>{{ room.location }}
+<div class="card mb-3 room" style="max-width: 540px;">
+    <div class="row g-0">
+        {% load static %}
+      <div class="col-md-4">
+        <img src="{% static '/img/no_photo.png' %}" class="img-fluid rounded-start room-image">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="{% url 'room-details' room.pk %}">{{ room.location }}</a></h5>
+          <div class="other-text">
+        <h6 class="card-title">room at {{ room.capacity }} people.</h6>
+        <small class="text-body-secondary">{{ self.location }}</small>
+          <p class="card-text">{{ room.description }}</p>
+          <p class="card-text"><small class="text-body-secondary">
+            Площа: {{ room.area }} м³,<br>
+            Ціна: {{ room.price }} ₴/день.
+        </small></p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endfor %}
+
+{% endblock %}

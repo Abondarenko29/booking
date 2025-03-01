@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="form text-center">
+<form method="POST" action="{% url 'book-room' %}">
+    {% csrf_token %}
+    <div>
+        <label for="room-number">room-number:</label>
+        <input type="text" id="room-number" name="room-number">
+    </div>
+
+    <div>
+        <label for="start-time">start-time:</label>
+        <input type="datetime-local" id="start-time" name="start-time">
+    </div>
+
+    <div>
+        <label for="end-time">end-time:</label>
+        <input type="datetime-local" id="end-time" name="end-time">
+    </div>
+    <button type="submit" class="small-button">book</button>
+</form>
+</div>
+
+{% endblock %}

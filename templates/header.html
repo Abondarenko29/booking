@@ -1,0 +1,30 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <div class="navbar-brand bold">
+        <img src="{% static 'img/logo.jpg'%}" width="60" height="48">Booking
+        </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown" data-bs-theme="dark">
+        <ul class="navbar-nav e-auto my-2 my-lg-0 navbar-nav-scroll">
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'book-room'%}">Забронювати кімнату</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'room-list'%}">Список кімнат</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Мої бронювання</a>
+            </li>
+            <li>
+                <a class="nav-link active" href="{% url 'logout' %}">Вийти</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container-fluid">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Введіть адресу" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Пошук</button>
+        </form>
+    </div>
+</nav>
