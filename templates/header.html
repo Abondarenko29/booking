@@ -23,9 +23,10 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{% url 'logout' %}">Вийти</a></li>
-                    <li><a class="dropdown-item" href="#">Змінити</a></li>
+                    <li><a class="dropdown-item" href="#">Переглянути</a></li>
+                    <li><a class="dropdown-item" href="{% url 'put' %}">Змінити</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Видалити</a></li>
+                    <li><a class="dropdown-item" href="{% url 'delete' continue_delete=0 %}" data-bs-target="#staticBackdrop">Видалити</a></li>
                 </ul>
               </li>
             {% else %}

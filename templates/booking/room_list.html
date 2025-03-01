@@ -22,7 +22,7 @@
             Ціна: {{ room.price }} ₴/день.
         </small></p>
         </div>
-        <a href="{% url 'book-room' %}" class="btn btn-primary active">Забронювати</a>
+        <a href="{% url 'book-room' %}?room-number={{ room.number }}" class="btn btn-primary active">Забронювати</a>
         </div>
       </div>
     </div>

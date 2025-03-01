@@ -66,3 +66,11 @@ p.description {
     padding:5px;
     margin-bottom:5%;
 }
+
+div.delete-form {
+    background-color: darkgoldenrod !important;
+}
+
+.red {
+    color:darkred !important;
+}

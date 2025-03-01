@@ -47,8 +47,15 @@ def book_room(request):
         return redirect('booking-details', pk=booking.id)
 
     else:
+        default_room_number = request.GET.get("room-number")
+        default_room_number = str(default_room_number)
+        default_room_number = default_room_number.replace("None", "")
+        context = {
+            "room_number": default_room_number,
+        }
         return render(request,
-                      "booking/booking_form.html",)
+                      "booking/booking_form.html",
+                      context)
 
 
 def booking_details(request, pk):

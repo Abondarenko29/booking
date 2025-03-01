@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
 from django.contrib import messages
 
@@ -40,3 +41,33 @@ def login_view(request):
             messages.error(request, "Неправильний username чи пароль")
     return render(request,
                   "auth_system/login.html")
+
+
+@login_required
+def put_view(request):
+    print(request.method)
+    if request.method == "POST":
+        username = request.POST.get("username")
+        phone_number = request.POST.get("phone_number")
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        request.user.username = username
+        request.user.phone_number = phone_number
+        request.user.first_name = first_name
+        request.user.last_name = last_name
+        request.user.save()
+        return redirect("room-list")
+    else:
+        return render(request,
+                      "auth_system/put_user.html")
+
+
+@login_required
+def delete_view(request, continue_delete):
+    if continue_delete == 0:
+        return render(request,
+                      "auth_system/delete_user.html")
+
+    elif continue_delete == 1:
+        request.user.delete()
+        return redirect("register")
