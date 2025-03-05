@@ -3,6 +3,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
 from django.contrib import messages
+from .models import CustomUser
+from booking.models import Booking
 
 
 # Create your views here.
@@ -45,7 +47,6 @@ def login_view(request):
 
 @login_required
 def put_view(request):
-    print(request.method)
     if request.method == "POST":
         username = request.POST.get("username")
         phone_number = request.POST.get("phone_number")
@@ -62,6 +63,21 @@ def put_view(request):
                       "auth_system/put_user.html")
 
 
+def put_password_view(request):
+    if request.method == "POST":
+        password = request.POST.get("password")
+        password_again = request.POST.get("password-again")
+        if password == password_again:
+            request.user.set_password(password)
+            request.user.save()
+            return redirect("room-list")
+        else:
+            messages.error(request, "Passwords aren't same.")
+
+    return render(request,
+                  "auth_system/put_password.html")
+
+
 @login_required
 def delete_view(request, continue_delete):
     if continue_delete == 0:
@@ -71,3 +87,15 @@ def delete_view(request, continue_delete):
     elif continue_delete == 1:
         request.user.delete()
         return redirect("register")
+
+
+def user_details(request, pk):
+    user = CustomUser.objects.get(pk=pk)
+    bookings = Booking.objects.filter(user=user)
+    context = {
+        "user": user,
+        "bookings": len(bookings),
+    }
+    return render(request,
+                  "auth_system/user_details.html",
+                  context)

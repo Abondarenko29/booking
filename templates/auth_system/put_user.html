@@ -9,16 +9,19 @@
     <form method="post" action="{% url 'put' %}">
         {% csrf_token %}
         <label for="username">Username:</label>
-        <input type="text" name="username" id="username"><br>
+        <input type="text" name="username" id="username" value="{{ request.user.username }}"><br>
+
+        <label for="password">Пароль:</label>
+        <a href="{% url 'put-password' %}">Змінити пароль</a><br>
 
         <label for="phone_number">Номер телефону:</label>
-        <input type="text" name="phone_number" id="phone_number"><br>
+        <input type="text" name="phone_number" id="phone_number" value="{{ request.user.phone_number }}"><br>
 
         <label for="first_name">Ім'я:</label>
-        <input type="text" name="first_name" id="first_name"><br>
+        <input type="text" name="first_name" id="first_name" value="{{ request.user.first_name }}"><br>
 
         <label for="last_name">Прізвище:</label>
-        <input type="text" name="last_name" id="last_name"><br>
+        <input type="text" name="last_name" id="last_name" value="{{ request.user.last_name }}"><br>
 
         <button type="submit" class="small-button">Змінити</button>
     </form>

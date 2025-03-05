@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
         <div class="navbar-brand bold">
-        <img src="{% static 'img/logo.jpg'%}" width="60" height="48">Booking
+        <img src="{% static 'img/logo.png'%}" width="60" height="48">Booking
         </div>
     </div>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown" data-bs-theme="dark">
@@ -23,7 +23,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{% url 'logout' %}">Вийти</a></li>
-                    <li><a class="dropdown-item" href="#">Переглянути</a></li>
+                    <li><a class="dropdown-item" href="{% url 'user-details' request.user.pk %}">Переглянути</a></li>
                     <li><a class="dropdown-item" href="{% url 'put' %}">Змінити</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'delete' continue_delete=0 %}" data-bs-target="#staticBackdrop">Видалити</a></li>
@@ -40,9 +40,5 @@
         </ul>
     </div>
     <div class="container-fluid">
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Введіть адресу" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Пошук</button>
-        </form>
     </div>
 </nav>

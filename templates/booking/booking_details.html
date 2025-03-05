@@ -4,20 +4,19 @@
 
 {% load static %}
 <div class="content">
-    <img src="{% static 'img/no_photo.png' %}" class="room">
-    <div>
-        <h1>
-        <a class="room" href="{% url 'room-details' booking.room.pk %}">Кімната № {{ booking.room.number }}</a>
-        </h1>
-        <hr class="none">
-        <h2>Заброньовано на: {{ booking.user.username }}</h2>
-        <span class="big">Вартість {{ total }} ₴</span>
-        <hr class="none">
-        <p>Бронювання здійснюється:<br>
-        З: {{ booking.start_time }}<br>
-        До: {{ booking.end_time }}.</p>
-        <small>Заброньовано {{ booking.creation_time }}.</small>
-    </div>
+    <h1>
+    <a class="room" href="{% url 'room-details' booking.room.pk %}">Кімната № {{ booking.room.number }}</a>
+    </h1>
+    <hr class="none">
+    <h2>
+        <a style="color:darkgoldenrod" href="{% url 'user-details' booking.user.pk %}">
+        Заброньовано на: {{ booking.user.username }}</a></h2>
+    <span class="big">Вартість {{ total }} ₴</span>
+    <hr class="none">
+    <p>Бронювання здійснюється:<br>
+    З: {{ booking.start_time }}<br>
+    До: {{ booking.end_time }}.</p>
+    <small>Заброньовано {{ booking.creation_time }}.</small>
 </div>
 
 {% endblock %}

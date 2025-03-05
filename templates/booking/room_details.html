@@ -3,18 +3,15 @@
 {% block content %}
 {% load static %}
 <div class="content">
-    <img src="{% static 'img/no_photo.png' %}" class="room">
-    <div>
-        <h1>Кімната №{{ room.number }}</h1>
-        <h2>Розрахована на {{ room.capacity }} людей</h2>
-        <hr class="none">
-        <h4>Адреса: {{ room.location }}</h4>
-        <h4>Ціна: {{ room.price }} ₴</h4>
-        <hr class="none">
-        <p class="description">{{ room.description }}</p>
-        <small>Площа: {{ room.area }} м²</small>
-        <div class="d-grid gap-2 col-6 mx-auto"><a href="{% url 'book-room' %}?room-number={{ room.number }}"
-            class="btn btn-primary active">Забронювати</a></div>
-    </div>
+    <h1>Кімната №{{ room.number }}</h1>
+    <h2>Розрахована на {{ room.capacity }} людей</h2>
+    <hr class="none">
+    <h4>Адреса: {{ room.location }}</h4>
+    <h4>Ціна: {{ room.price }} ₴</h4>
+    <hr class="none">
+    <p class="description">{{ room.description }}</p>
+    <small>Площа: {{ room.area }} м²</small>
+    <div class="d-grid gap-2 col-6 mx-auto"><a href="{% url 'book-room' %}?room-number={{ room.number }}"
+        class="btn btn-primary active">Забронювати</a></div>
 </div>
 {% endblock %}

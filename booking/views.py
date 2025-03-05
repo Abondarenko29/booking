@@ -33,18 +33,39 @@ def book_room(request):
 
         try:
             room = Room.objects.get(number=room_number)
+            bookings = Booking.objects.filter(room=room)
 
         except Room.DoesNotExist:
             return HttpResponse("Room doesn't exist.",
                                 status=404)
 
-        booking = Booking.objects.create(
+        conditionals = []
+        booking = Booking(
             user=request.user,
             room=room,
             start_time=start_time,
             end_time=end_time,
             )
-        return redirect('booking-details', pk=booking.id)
+        for booking_is_be in bookings:
+            conditional1 = (booking.end_time
+                            <= str(booking_is_be.start_time))
+            conditional2 = (booking.start_time
+                            >= str(booking_is_be.end_time))
+            conditionals.append(conditional1 or conditional2)
+
+        conditional = booking.end_time > booking.start_time
+        if not (False in conditionals) and conditional:
+            booking.save()
+            return redirect('booking-details', pk=booking.id)
+
+        elif not (conditional):
+            return HttpResponse("""Кінцева дата повинна
+                                бути більшою за початкову""",
+                                status=404)
+
+        else:
+            return HttpResponse("На цей час вже забронювали, виберіть інший.",
+                                status=404)
 
     else:
         default_room_number = request.GET.get("room-number")

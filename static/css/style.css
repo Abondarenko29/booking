@@ -6,19 +6,8 @@ div.room {
     margin:25px;
     border: 3px solid black;
     border-radius:8px;
-}
-img.room-image {
-    margin:3px;
-    max-width:120%;
-    max-height:120% !important;
-    height:90%;
-}
-img.room {
-    max-width:50%;
-    max-height:100%;
-    margin-right:10px;
-    border:5px dashed darkred;
-    border-radius:6px;
+    display: inline-flex;
+    width:28%;
 }
 
 div.bold {
@@ -42,8 +31,9 @@ button.btn-outline-success {
 }
 
 div.content {
-    display:flex;
     color:darkgoldenrod;
+    margin-left:25%;
+    margin-right:25%;
 }
 
 span.big {
@@ -71,6 +61,20 @@ div.delete-form {
     background-color: darkgoldenrod !important;
 }
 
+div.text-center {
+    text-align:center;
+}
+
 .red {
     color:darkred !important;
+}
+
+div.view {
+    color:darkgoldenrod;
+    margin:10px;
+    border:3px solid darkblue;
+    border-radius:20px;
+    align-content:center;
+    margin-left:25%;
+    margin-right:25%;
 }
